@@ -6,8 +6,9 @@ const StyledHeader = styled.header`
     background-color: #222;
 
 `;
+
 const Logo = styled(Link)`
-    color: #4ac44c;
+    color: white;
     text-decoration:none;
     font-size: 24px;
     font-weight: bold; 

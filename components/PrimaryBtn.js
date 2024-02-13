@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { primary } from '@/lib/colors'
 
 const StyledBtn = styled.button`
     border: 0;
@@ -8,6 +9,7 @@ const StyledBtn = styled.button`
     cursor: pointer;
     display: inline-flex;
     align-items: center;
+    font-weight: bold;
     ${props => props.white && !props.outline && css`
         background-color: #fff;
         color: #000;
@@ -15,11 +17,17 @@ const StyledBtn = styled.button`
     ${props => props.white && props.outline && css`
         background-color: transparent;
         color: #fff;
-        border: 1px solid #fff;
+        border: 2px solid #fff;
     `}
-    ${props => props.primary && css`
-        background-color: #3b1bf2;
+    ${props => props.primary && !props.outline && css`
+        background-color: ${primary};
+        border: 2px solid ${primary};
         color: #fff;
+    `}
+    ${props => props.primary && props.outline && css`
+        background-color: transparent;
+        border: 2px solid ${primary};
+        color: ${primary};
     `}
     ${props => props.size === 'large' && css`
         font-size: 1.2rem;

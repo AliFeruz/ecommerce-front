@@ -50,12 +50,12 @@ const Featured = ({product}) => {
           <Desc>{product.description}</Desc>
           <BtnWrapper>
           <ButtonLink href={'/products/' + product._id} white={1} outline={1} >Read more</ButtonLink>
-          <PrimaryBtn primary={1} >Add to cart</PrimaryBtn>
+          <PrimaryBtn white={1}>Add to cart</PrimaryBtn>
           </BtnWrapper>
           </div> 
           </Column>
           <Column>
-          <ImageStyled src={product.images[1]} 
+          <ImageStyled src={product.images[0]} 
           alt='image' width={400} height={250} />
           </Column>
         </Wrapper>

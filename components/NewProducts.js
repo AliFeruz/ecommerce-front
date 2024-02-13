@@ -10,15 +10,22 @@ const StyledCenter = styled.div`
 
 const ProductGrid = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-top: 20px;
 `;
-
+const Title = styled.h2`
+    font-size: 2rem;
+    margin: 30px 0 20px;
+    font-weight: 500;
+`
 const NewProducts = ({products}) => {
   return (
     <StyledCenter>
+        <Title>New Arrivals</Title>
         <ProductGrid>
         {products && products.map(product => (
-            <ProductCard key={product._id}>{product.title}</ProductCard>
+        <ProductCard {...product} key={product._id}/>
         ))}
     </ProductGrid>
     </StyledCenter>
