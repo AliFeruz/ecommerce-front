@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import PrimaryBtn from './PrimaryBtn'
 import ButtonLink from './ButtonLink'
+import { CartContext } from '@/context/CartContext'
 
 const StyledCenter = styled.div`
   max-width: 900px;
@@ -40,6 +41,13 @@ const BtnWrapper = styled.div`
 `
 
 const Featured = ({product}) => {
+  const { addToCart } = useContext(CartContext);
+
+  const handleAddToCart = () => {
+    addToCart(product._id); 
+  };
+ 
+
   return (
     <Bg>
       <StyledCenter>
@@ -50,7 +58,7 @@ const Featured = ({product}) => {
           <Desc>{product.description}</Desc>
           <BtnWrapper>
           <ButtonLink href={'/products/' + product._id} white={1} outline={1} >Read more</ButtonLink>
-          <PrimaryBtn white={1}>Add to cart</PrimaryBtn>
+          <PrimaryBtn white={1} onClick={handleAddToCart}>Add to cart</PrimaryBtn>
           </BtnWrapper>
           </div> 
           </Column>

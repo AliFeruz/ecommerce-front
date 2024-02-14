@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import ProductCard from './ProductCard';
 
+
 const StyledCenter = styled.div`
     max-width: 900px;
     margin: 0 auto;
@@ -20,6 +21,8 @@ const Title = styled.h2`
     font-weight: 500;
 `
 const NewProducts = ({products}) => {
+  
+
   return (
     <StyledCenter>
         <Title>New Arrivals</Title>

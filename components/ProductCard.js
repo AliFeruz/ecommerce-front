@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import PrimaryBtn from './PrimaryBtn';
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link';
+import { CartContext } from '@/context/CartContext';
 
 
 const Card = styled(Link)`
@@ -41,6 +42,12 @@ const PriceRow = styled.div`
 `
 
 const ProductCard = ({_id, title, images, price}) => {
+  const { addToCart } = useContext(CartContext);
+
+  const handleAddToCart = () => {
+    addToCart(_id); 
+  };
+
   return (
     <div>
     <Card href={'/products/' + _id}>
@@ -52,13 +59,12 @@ const ProductCard = ({_id, title, images, price}) => {
     <Title>{title}</Title>
     <PriceRow>
     <Price>${price}</Price>
-    <PrimaryBtn primary={1} outline={1}>
+    <PrimaryBtn primary={1} outline={1} onClick={handleAddToCart}>
     <ShoppingCartIcon width={16} height={16}/>
     </PrimaryBtn>
     </PriceRow>
     </ProductInfo>
     </div>
-   
   )
 }
 
