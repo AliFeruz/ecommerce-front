@@ -23,10 +23,22 @@ export function CartContextProvider({children}){
         setCartProducts(prev => [...prev, productID])
       }
     
+      function removeProduct(productID){
+        setCartProducts(prev => {
+          const pos = prev.indexOf(productID);
+          if (pos !== -1){
+            return prev.filter((value, index) => index !== pos);
+          }
+          return prev;
+        })
+      }
+
+
     const values = {
         cartProducts,
         setCartProducts,
-        addToCart
+        addToCart,
+        removeProduct
     }
 
     return (
