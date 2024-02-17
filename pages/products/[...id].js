@@ -1,16 +1,16 @@
 import Header from '@/components/Header'
 import PrimaryBtn from '@/components/PrimaryBtn'
 import ProductImages from '@/components/ProductImages'
+import { CartContext } from '@/context/CartContext'
 import { mongooseConnect } from '@/lib/mongoose'
 import { Product } from '@/models/product'
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 const StyledCenter = styled.div`
     max-width: 900px;
     margin: 0 auto;
-    padding: 20px 20px;
-    
+    padding: 20px 20px; 
 `
 
 const Title = styled.h1`
@@ -51,7 +51,13 @@ export async function getServerSideProps(context){
   }
 }
 
-const product = ({product}) => {
+const ProductPage = ({product}) => {
+  const { addToCart } = useContext(CartContext);
+
+  const handleAddToCart = () => {
+    addToCart(product._id); 
+  };
+
   return (
     <div>
     <Header/>
@@ -65,7 +71,7 @@ const product = ({product}) => {
     <p>{product.description}</p>
     <PriceRow>
       <Price>${product.price}</Price>
-      <PrimaryBtn primary>add to cart</PrimaryBtn>
+      <PrimaryBtn primary onClick={handleAddToCart}>Add to cart</PrimaryBtn>
     </PriceRow>
     </div>
     </Wrapper>
@@ -75,4 +81,4 @@ const product = ({product}) => {
   )
 }
 
-export default product
+export default ProductPage

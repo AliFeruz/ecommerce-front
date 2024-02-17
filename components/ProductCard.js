@@ -5,7 +5,6 @@ import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link';
 import { CartContext } from '@/context/CartContext';
 
-
 const Card = styled(Link)`
   background-color: white;
   padding: 20px;

@@ -5,6 +5,7 @@ import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/product";
 import Head from "next/head";
 
+
 export async function getServerSideProps(){
   const featuredProduct = '65ba62e1a3697bfdad7ed36d';
   await mongooseConnect();
