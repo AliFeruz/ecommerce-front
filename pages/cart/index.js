@@ -57,7 +57,10 @@ const ProductName = styled.p`
 `
 
 const Cart = () => {
-    const { cartProducts, addToCart, removeProduct } = useContext(CartContext);
+    const { cartProducts, 
+            addToCart, 
+            removeProduct,
+            clearCart } = useContext(CartContext);
     const [products, setProducts] = useState([]);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -65,6 +68,7 @@ const Cart = () => {
     const [city, setCity ]= useState('');
     const [cityCode, setCityCode ]= useState('');
     const [address, setAddress ]= useState('');
+    const [isSucces, setIsSucces] = useState(false);
 
 
     useEffect(()=>{
@@ -100,7 +104,18 @@ const Cart = () => {
         total += price;
     }
 
-    if(window.location.href.includes('succes')){
+    useEffect(() => {
+        if(typeof window === 'undefined'){
+            return;
+        };
+        
+        if(window.location.href.includes('succes')){
+            setIsSucces(true);
+            clearCart();
+        }
+    },[])
+
+    if(isSucces){
         return (
             <>
             <Header/>

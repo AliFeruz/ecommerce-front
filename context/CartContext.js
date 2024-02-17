@@ -18,6 +18,9 @@ export function CartContextProvider({children}){
       }
     }, []);
 
+    function clearCart(){
+      setCartProducts([])
+    }
 
     function addToCart(productID){
         setCartProducts(prev => [...prev, productID])
@@ -38,7 +41,8 @@ export function CartContextProvider({children}){
         cartProducts,
         setCartProducts,
         addToCart,
-        removeProduct
+        removeProduct,
+        clearCart
     }
 
     return (
